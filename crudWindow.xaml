@@ -12,8 +12,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"></RowDefinition>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -29,7 +29,9 @@
             <ListBox SelectionChanged="costumerListSelectionChanged" Margin="10" Name="costumerList" Grid.Row="1" Grid.Column="0"></ListBox>
             <ListBox Margin="10" Name="orderList" Grid.Row="1" Grid.Column="1"></ListBox>
             <ListBox Margin="10" Name="allOrdersList" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2"></ListBox>
-            <Label Grid.Row="2" Name="conShow" Content="String"></Label>
+            
+            <Label Grid.Row="2" Name="conShow" Content="Opciones"></Label>
+            <Button Click="deleteButton" Grid.Row="2" Height="40" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Borrar"></Button>
 
         </Grid>
         

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using crud.Classes.read;
+using crud.Classes.delete;
 
 namespace crud
 {
@@ -23,6 +24,8 @@ namespace crud
     {
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         Read read = new Read();
+        Delete delete = new Delete();
+
         private string constring;
 
         public crudWindow()
@@ -34,6 +37,24 @@ namespace crud
 
 
 // ---------------------------Codigo de Los Botones-------------------------------------------
+
+        //--------------- Botones para manejar tablas-----------------------------------------
+
+        void deleteButton(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este dato? \n{allOrdersList.SelectedValue.ToString()}",
+                                             "Borrar datos en la tabla",MessageBoxButton.YesNo);
+
+            if (deleteConfirm == MessageBoxResult.Yes) 
+            {
+                MessageBox.Show("Borrado con exito");
+                delete.DeleteOrder(allOrdersList,mainWindow.con);
+                read.ShowAllCostumers(allOrdersList, mainWindow.con);
+            }
+
+        }
+
+        //------------------------------------------------------------------------------------
         void costumerListSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             read.ShowOrders(costumerList,orderList,mainWindow.con);
@@ -46,7 +67,7 @@ namespace crud
             mainWindow.con.Close();
             mainWindow.closedConnectionMessage();
         }
-
+        
         void Disconnect(object sender, RoutedEventArgs e)
         {
             this.Close();

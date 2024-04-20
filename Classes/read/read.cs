@@ -52,7 +52,7 @@ namespace crud.Classes.read
 
         public void ShowAllCostumers(ListBox allOrdersList, MySqlConnection con)
         {
-            string query = "SELECT CONCAT(cCliente,'   ', fechaPedido, '   ', formaPago) AS infoCompleta FROM pedido";
+            string query = "SELECT *, CONCAT(cCliente,'   ', fechaPedido, '   ', formaPago) AS infoCompleta FROM pedido";
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
             using (dataAdapter)

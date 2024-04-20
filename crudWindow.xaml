@@ -1,0 +1,38 @@
+﻿<Window x:Class="crud.crudWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:crud"
+        mc:Ignorable="d"
+        Closing="windowClosing"
+        Title="Gestion de pedidos" Height="450" Width="900" WindowStyle="ThreeDBorderWindow">
+    <Grid Background="LightSkyBlue">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="350"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!--Clientes-->
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Clientes" Grid.Column="0"></Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Pedidos" Grid.Column="1"></Label>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Todos los pedidos" Grid.Column="2"></Label>
+
+            <ListBox SelectionChanged="costumerListSelectionChanged" Margin="10" Name="costumerList" Grid.Row="1" Grid.Column="0"></ListBox>
+            <ListBox Margin="10" Name="orderList" Grid.Row="1" Grid.Column="1"></ListBox>
+            <ListBox Margin="10" Name="allOrdersList" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2"></ListBox>
+            <Label Grid.Row="2" Name="conShow" Content="String"></Label>
+
+        </Grid>
+        
+        <Button Click="Disconnect" Margin="10" Content="Desconectar" Height="40" Width="90" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
+    </Grid>
+</Window>

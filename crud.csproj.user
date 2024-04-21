@@ -10,9 +10,15 @@
     <Compile Update="Classes\crudWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Classes\insertCustomer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="crudWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="insertCustomer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

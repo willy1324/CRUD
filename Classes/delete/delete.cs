@@ -9,28 +9,29 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Mysqlx.Crud;
 
 namespace crud.Classes.delete
 {
-    class Delete
+    public class Delete
     {
         public void DeleteOrder(ListBox Order, MySqlConnection con)
         {
 
             try
             {
-                MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este dato? \n{Order.SelectedValue.ToString()}",
-                                             "Borrar datos en la tabla", MessageBoxButton.YesNo);
+                MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este pedido? \n{Order.SelectedValue.ToString()}",
+                                             "Borrar un pedido", MessageBoxButton.YesNo);
 
                 if (deleteConfirm == MessageBoxResult.Yes)
                 {
-                    string query = "DELETE FROM PEDIDO WHERE ID = @orderToDelete";
+                    string query = "DELETE FROM pedido WHERE ID = @orderToDelete";
                     MySqlCommand command = new MySqlCommand(query, con);
 
                     command.Parameters.AddWithValue("@orderToDelete", Order.SelectedValue);
                     command.ExecuteNonQuery();
 
-                    MessageBox.Show("Borrado con exito");
+                    MessageBox.Show("Pedido borrado con exito");
                 }
             }
 
@@ -39,6 +40,31 @@ namespace crud.Classes.delete
                 MessageBox.Show("Error: " + e.ToString());
             }
             
+        }
+
+        public void DeleteCustomer(ListBox Customer, MySqlConnection con)
+        {
+            try
+            {
+                MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este cliente? \n{Customer.SelectedValue.ToString()}",
+                                             "Borrar un Cliente", MessageBoxButton.YesNo);
+
+                if (deleteConfirm == MessageBoxResult.Yes)
+                {
+                    string query = "DELETE FROM cliente WHERE ID = @customerToDelete";
+                    MySqlCommand command = new MySqlCommand(query, con);
+
+                    command.Parameters.AddWithValue("@customerToDelete", Customer.SelectedValue);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Cliente borrado con exito");
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.ToString());
+            }
         }
 
     }

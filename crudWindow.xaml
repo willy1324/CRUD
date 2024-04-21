@@ -26,14 +26,14 @@
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Pedidos" Grid.Column="1"></Label>
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Todos los pedidos" Grid.Column="2"></Label>
 
-            <ListBox SelectionChanged="costumerListSelectionChanged" Margin="10" Name="costumerList" Grid.Row="1" Grid.Column="0"></ListBox>
+            <ListBox MouseDoubleClick="CustomerListMouseDoubleClick" Margin="10" Name="CustomerList" Grid.Row="1" Grid.Column="0"></ListBox>
             <ListBox Margin="10" Name="orderList" Grid.Row="1" Grid.Column="1"></ListBox>
             <ListBox Margin="10" Name="allOrdersList" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2"></ListBox>
             
-            <Label  Margin="0,0,100,0" Grid.Row="2" Grid.Column="1" Name="conShow"  Content="Insertar" HorizontalAlignment="Right"></Label>
-            <TextBox Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0" Height="40" Width="380" Grid.ColumnSpan="2"></TextBox>
+            <Label  Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" Name="conShow"  Content="Insertar" HorizontalAlignment="Right"></Label>
+            <TextBox Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0" Height="40" Width="452" Grid.ColumnSpan="2"></TextBox>
             <Button Margin="10" Click="deleteButton" Grid.Row="3" Grid.Column="1" Height="40" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Borrar"></Button>
-            <Button Margin="10" Click="createCostumerButton" Grid.Row="3" Grid.Column="0" Height="40" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Insertar Cliente"></Button>
+            <Button Margin="10" Click="createCustomerButton" Grid.Row="3" Grid.Column="0" Height="40" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Insertar Cliente"></Button>
             <Button Margin="10" Click="createOrderButton" Grid.Row="3" Grid.Column="0" Height="40" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Insertar Pedido"></Button>
 
 

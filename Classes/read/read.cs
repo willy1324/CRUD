@@ -11,37 +11,36 @@ using System.Windows.Controls;
 namespace crud.Classes.read
 {
 
-    class Read
+    public class Read
     {
-        public void ShowCostumers(ListBox costumerList, MySqlConnection con)
+        public void ShowCustomers(ListBox CustomerList, MySqlConnection con)
         {
 
             try
             {
+                string query = "SELECT * FROM cliente";
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
+                using (dataAdapter)
+                {
+                    DataTable CustomerTable = new DataTable();
+
+                    //Rellenando tabla
+                    dataAdapter.Fill(CustomerTable);
+                    CustomerList.DisplayMemberPath = "nombre";
+                    CustomerList.SelectedValuePath = "ID";
+                    CustomerList.ItemsSource = CustomerTable.DefaultView;
+                }
             }
 
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.ToString());
             }
-
-            string query = "SELECT * FROM cliente";
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
-
-            using (dataAdapter)
-            {
-                DataTable costumerTable = new DataTable();
-
-                //Rellenando tabla
-                dataAdapter.Fill(costumerTable);
-                costumerList.DisplayMemberPath = "nombre";
-                costumerList.SelectedValuePath = "ID";
-                costumerList.ItemsSource = costumerTable.DefaultView;
-            }
+            
         }
 
-        public void ShowOrders(ListBox costumerList, ListBox orderList, MySqlConnection con)
+        public void ShowOrders(ListBox CustomerList, ListBox orderList, MySqlConnection con)
         {
 
             try
@@ -53,7 +52,7 @@ namespace crud.Classes.read
 
                 using (dataAdapter)
                 {
-                    command.Parameters.AddWithValue("@ClienteID", costumerList.SelectedValue);
+                    command.Parameters.AddWithValue("@ClienteID", CustomerList.SelectedValue);
                     DataTable ordersTable = new DataTable();
 
                     //Rellenando tabla
@@ -71,7 +70,7 @@ namespace crud.Classes.read
            
         }
 
-        public void ShowAllCostumers(ListBox allOrdersList, MySqlConnection con)
+        public void ShowAllCustomers(ListBox allOrdersList, MySqlConnection con)
         {
             try
             {

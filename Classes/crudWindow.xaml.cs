@@ -23,15 +23,15 @@ namespace crud
     
     public partial class crudWindow : Window
     {
-        MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-        Read read = new Read();
-        Delete delete = new Delete();
+        public MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+        public Read read = new Read();
+        public Delete delete = new Delete();
 
         public crudWindow()
         {
             InitializeComponent();
-            read.ShowCostumers(costumerList,mainWindow.con);
-            read.ShowAllCostumers(allOrdersList,mainWindow.con);
+            read.ShowCustomers(CustomerList,mainWindow.con);
+            read.ShowAllCustomers(allOrdersList,mainWindow.con);
         }
 
 
@@ -42,27 +42,40 @@ namespace crud
         void deleteButton(object sender, RoutedEventArgs e)
         {
 
+            //Borrar desde la lista de todos los pedidos
             if (allOrdersList.SelectedValue != null)
             {
                 delete.DeleteOrder(allOrdersList, mainWindow.con);               
             }
 
-            else if (costumerList.SelectedValue != null)
+            //Borrar desde la lista filtrada por clientes
+            else if (orderList.SelectedValue != null)
             {
-                delete.DeleteOrder(costumerList, mainWindow.con);            
+                delete.DeleteOrder(orderList, mainWindow.con);            
             }
 
+            //Borrar clientes
+            else if (CustomerList.SelectedValue != null)
+            {
+                delete.DeleteCustomer(CustomerList, mainWindow.con);
+            }
+
+            //No seleccionar nada
             else
             {
-                MessageBox.Show("Selecciona algun pedido");
+                MessageBox.Show("Selecciona algun pedido o cliente");
             }
 
-            read.ShowAllCostumers(allOrdersList, mainWindow.con);
-            read.ShowCostumers(costumerList, mainWindow.con);
+            //Refrescar las tablas
+            read.ShowAllCustomers(allOrdersList, mainWindow.con);
+            read.ShowOrders(CustomerList,orderList, mainWindow.con);
+            read.ShowCustomers(CustomerList, mainWindow.con);
         }
 
-        void createCostumerButton(object sender, RoutedEventArgs e)
+        void createCustomerButton(object sender, RoutedEventArgs e)
         {
+            insertCustomer CustomerWindow = new insertCustomer(this);
+            CustomerWindow.Show();
 
         }
 
@@ -72,9 +85,9 @@ namespace crud
         }
 
         //------------------------------------------------------------------------------------
-        void costumerListSelectionChanged(object sender, SelectionChangedEventArgs e)
+        void CustomerListMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            read.ShowOrders(costumerList,orderList,mainWindow.con);
+            read.ShowOrders(CustomerList,orderList,mainWindow.con);
         }
 
 

@@ -59,3 +59,5 @@ G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\crud.pdb
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\crud.genruntimeconfig.cache
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\ref\crud.dll
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\crud.sourcelink.json
+G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\insertCustomer.g.cs
+G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\insertCustomer.baml

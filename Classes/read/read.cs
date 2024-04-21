@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,17 @@ namespace crud.Classes.read
     {
         public void ShowCostumers(ListBox costumerList, MySqlConnection con)
         {
+
+            try
+            {
+
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.ToString());
+            }
+
             string query = "SELECT * FROM cliente";
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
@@ -32,39 +44,57 @@ namespace crud.Classes.read
         public void ShowOrders(ListBox costumerList, ListBox orderList, MySqlConnection con)
         {
 
-            string query = "SELECT * FROM pedido P INNER JOIN cliente C ON C.ID = P.cCliente WHERE C.ID = @ClienteID";
-
-            MySqlCommand command = new MySqlCommand(query,con);
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
-
-            using (dataAdapter)
+            try
             {
-                command.Parameters.AddWithValue("@ClienteID", costumerList.SelectedValue);
-                DataTable ordersTable = new DataTable();
-                            
-                //Rellenando tabla
-                dataAdapter.Fill(ordersTable);
-                orderList.DisplayMemberPath = "fechaPedido";
-                orderList.SelectedValuePath = "ID";
-                orderList.ItemsSource = ordersTable.DefaultView;
+                string query = "SELECT * FROM pedido P INNER JOIN cliente C ON C.ID = P.cCliente WHERE C.ID = @ClienteID";
+
+                MySqlCommand command = new MySqlCommand(query, con);
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+
+                using (dataAdapter)
+                {
+                    command.Parameters.AddWithValue("@ClienteID", costumerList.SelectedValue);
+                    DataTable ordersTable = new DataTable();
+
+                    //Rellenando tabla
+                    dataAdapter.Fill(ordersTable);
+                    orderList.DisplayMemberPath = "fechaPedido";
+                    orderList.SelectedValuePath = "ID";
+                    orderList.ItemsSource = ordersTable.DefaultView;
+                }
             }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.ToString());
+            }
+           
         }
 
         public void ShowAllCostumers(ListBox allOrdersList, MySqlConnection con)
         {
-            string query = "SELECT *, CONCAT(cCliente,'   ', fechaPedido, '   ', formaPago) AS infoCompleta FROM pedido";
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
-
-            using (dataAdapter)
+            try
             {
-                DataTable allOrdersTable = new DataTable();
+                string query = "SELECT *, CONCAT(cCliente,'   ', fechaPedido, '   ', formaPago) AS infoCompleta FROM pedido";
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
-                //Rellenando tabla
-                dataAdapter.Fill(allOrdersTable);
-                allOrdersList.DisplayMemberPath = "infoCompleta";
-                allOrdersList.SelectedValuePath = "ID";
-                allOrdersList.ItemsSource = allOrdersTable.DefaultView;
+                using (dataAdapter)
+                {
+                    DataTable allOrdersTable = new DataTable();
+
+                    //Rellenando tabla
+                    dataAdapter.Fill(allOrdersTable);
+                    allOrdersList.DisplayMemberPath = "infoCompleta";
+                    allOrdersList.SelectedValuePath = "ID";
+                    allOrdersList.ItemsSource = allOrdersTable.DefaultView;
+                }
             }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.ToString());
+            }
+
         }
 
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +16,27 @@ namespace crud.Classes.delete
     {
         public void DeleteOrder(ListBox Order, MySqlConnection con)
         {
-            MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este dato? \n{Order.SelectedValue.ToString()}",
+
+            try
+            {
+                MessageBoxResult deleteConfirm = MessageBox.Show($"¿Estas seguro de que deseas borrar este dato? \n{Order.SelectedValue.ToString()}",
                                              "Borrar datos en la tabla", MessageBoxButton.YesNo);
 
-            if (deleteConfirm == MessageBoxResult.Yes)
+                if (deleteConfirm == MessageBoxResult.Yes)
+                {
+                    string query = "DELETE FROM PEDIDO WHERE ID = @orderToDelete";
+                    MySqlCommand command = new MySqlCommand(query, con);
+
+                    command.Parameters.AddWithValue("@orderToDelete", Order.SelectedValue);
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Borrado con exito");
+                }
+            }
+
+            catch (Exception e)
             {
-                string query = "DELETE FROM PEDIDO WHERE ID = @orderToDelete";
-                MySqlCommand command = new MySqlCommand(query, con);
-
-                command.Parameters.AddWithValue("@orderToDelete", Order.SelectedValue);
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Borrado con exito");
+                MessageBox.Show("Error: " + e.ToString());
             }
             
         }

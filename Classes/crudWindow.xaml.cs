@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using crud.Classes.create;
 using crud.Classes.read;
 using crud.Classes.delete;
 
@@ -25,8 +26,6 @@ namespace crud
         MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
         Read read = new Read();
         Delete delete = new Delete();
-
-        private string constring;
 
         public crudWindow()
         {
@@ -45,21 +44,31 @@ namespace crud
 
             if (allOrdersList.SelectedValue != null)
             {
-                delete.DeleteOrder(allOrdersList, mainWindow.con);
-                read.ShowAllCostumers(allOrdersList, mainWindow.con);
+                delete.DeleteOrder(allOrdersList, mainWindow.con);               
             }
 
             else if (costumerList.SelectedValue != null)
             {
-                delete.DeleteOrder(costumerList, mainWindow.con);
-                read.ShowCostumers(costumerList, mainWindow.con);
+                delete.DeleteOrder(costumerList, mainWindow.con);            
             }
 
             else
             {
                 MessageBox.Show("Selecciona algun pedido");
             }
-            
+
+            read.ShowAllCostumers(allOrdersList, mainWindow.con);
+            read.ShowCostumers(costumerList, mainWindow.con);
+        }
+
+        void createCostumerButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        void createOrderButton(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //------------------------------------------------------------------------------------

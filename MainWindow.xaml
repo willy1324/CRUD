@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Conectar a base de datos" Height="450" Width="450"
         WindowStartupLocation="CenterScreen">
-    
-    <Grid>
+
+    <Grid Background="#171336">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="70"></RowDefinition>
@@ -26,14 +26,14 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="40" Margin="20" Grid.Row="0" Content="Practica de CRUD" Grid.ColumnSpan="2"></Label>
-            <Label VerticalAlignment="Center" FontSize="20" Margin="20" Grid.Row="1" Content="Usuario :"></Label>
-            <Label VerticalAlignment="Center" FontSize="20" Margin="20" Grid.Row="2" Content="Contraseña :"></Label>
+            <Label Foreground="#cfe2ee" FontSize="40" Margin="20" Grid.Row="0" Content="Practica de CRUD" Grid.ColumnSpan="2" FontFamily="Bahnschrift"></Label>
+            <Label Foreground="#cfe2ee" VerticalAlignment="Center" FontSize="20" Margin="20" Grid.Row="1" Content="Usuario :"></Label>
+            <Label Foreground="#cfe2ee" VerticalAlignment="Center" FontSize="20" Margin="20" Grid.Row="2" Content="Contraseña :"></Label>
 
-            <TextBox TextAlignment="Center" Name="tBuser" FontSize="20" Margin="20" Grid.Row="1" Grid.Column="1" Text="root"></TextBox>
-            <PasswordBox HorizontalContentAlignment="Center" Name="tBpwD" FontSize="20" Margin="20" Grid.Row="2" Grid.Column="1"></PasswordBox>
+            <TextBox TextAlignment="Center" Name="tBuser" FontSize="30" Margin="30" Grid.Row="1" Grid.Column="1" Text="root"></TextBox>
+            <PasswordBox HorizontalContentAlignment="Center" Name="tBpwD" FontSize="20" Margin="30" Grid.Row="2" Grid.Column="1"></PasswordBox>
         </Grid>
-        
-        <Button Grid.Row="1" Click="ConnectToSql" HorizontalAlignment="Center" Height= "50" Width="120" Margin="20,0,0,0" Content="Conectarse" FontSize="14"/>
+
+        <Button Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Grid.Row="1" Click="ConnectToSql" HorizontalAlignment="Center" Height= "50" Width="120" Margin="20,0,0,0" Content="Conectarse" FontSize="14"/>
     </Grid>
 </Window>

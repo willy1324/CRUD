@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud"
         mc:Ignorable="d"
-        Title="Insertar Pedidos" Height="450" Width="500">
+        Title="Insertar Pedidos" Height="450" Width="500"
+        WindowStartupLocation="CenterScreen">
     
     <Grid Background="LightSkyBlue">
         <Grid.RowDefinitions>

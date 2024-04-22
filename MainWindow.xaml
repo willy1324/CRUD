@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:crud"
         mc:Ignorable="d"
-        Title="Conectar a base de datos" Height="450" Width="450">
+        Title="Conectar a base de datos" Height="450" Width="450"
+        WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

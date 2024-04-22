@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:crud"
         mc:Ignorable="d"
         Closing="windowClosing"
-        Title="Gestion de pedidos" Height="450" Width="900" WindowStyle="ThreeDBorderWindow">
+        Title="Gestion de pedidos" Height="450" Width="900" WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen">
+    
     <Grid Background="LightSkyBlue">
         <Grid>
             <Grid.RowDefinitions>

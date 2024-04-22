@@ -28,6 +28,7 @@ namespace crud
         Create create = new Create();
         Read read = new Read();
         Update update = new Update();
+        string customerId;
 
         bool editMode;
 
@@ -91,9 +92,8 @@ namespace crud
             addButton.Content = "Editar cliente";
         }
 
-        void cancelButton(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        public void IDGetter(string id) { customerId = id; }
+
+        void cancelButton(object sender, RoutedEventArgs e) { this.Close(); }
     }
 }

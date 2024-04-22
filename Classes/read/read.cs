@@ -99,7 +99,7 @@ namespace crud.Classes.read
 
         public void ReadCustomerOnEditMode (ListBox CustomerList, MySqlConnection con, insertCustomer EditWindow)
         {
-            string query = "SELECT nombre, direccion, poblacion, telefono FROM cliente " +
+            string query = "SELECT id, nombre, direccion, poblacion, telefono FROM cliente " +
                            "WHERE ID = @ClienteID";
 
             MySqlCommand command = new MySqlCommand(query, con);
@@ -115,6 +115,8 @@ namespace crud.Classes.read
 
                     //Rellena la informacion del formulario de la ventana con la tabla
                     dataAdapter.Fill(CustomerTable);
+
+                    EditWindow.IDGetter(CustomerTable.Rows[0]["id"].ToString());
                     EditWindow.nameTb.Text = CustomerTable.Rows[0]["nombre"].ToString();
                     EditWindow.directionTb.Text = CustomerTable.Rows[0]["direccion"].ToString();
                     EditWindow.cityTb.Text = CustomerTable.Rows[0]["poblacion"].ToString();

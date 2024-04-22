@@ -21,7 +21,6 @@ using crud.Classes.delete;
 
 namespace crud
 {
-    
     public partial class crudWindow : Window
     {
         public MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
@@ -43,31 +42,18 @@ namespace crud
 
         void DeleteButton(object sender, RoutedEventArgs e)
         {
-
             //Borrar desde la lista de todos los pedidos
-            if (allOrdersList.SelectedValue != null)
-            {
-                delete.DeleteOrder(allOrdersList, mainWindow.con);               
-            }
+            if (allOrdersList.SelectedValue != null) { delete.DeleteOrder(allOrdersList, mainWindow.con); }
 
             //Borrar desde la lista filtrada por clientes
-            else if (orderList.SelectedValue != null)
-            {
-                delete.DeleteOrder(orderList, mainWindow.con);            
-            }
+            else if (orderList.SelectedValue != null) { delete.DeleteOrder(orderList, mainWindow.con); }
 
             //Borrar clientes
-            else if (CustomerList.SelectedValue != null)
-            {
-                delete.DeleteCustomer(CustomerList, mainWindow.con);
-            }
+            else if (CustomerList.SelectedValue != null) { delete.DeleteCustomer(CustomerList, mainWindow.con); }
 
             //No seleccionar nada
-            else
-            {
-                MessageBox.Show("Selecciona algun pedido o cliente");
-            }
-
+            else { MessageBox.Show("Selecciona algun pedido o cliente"); }
+                       
             //Refrescar las tablas
             read.ShowAllCustomers(allOrdersList, mainWindow.con);
             read.ShowOrders(CustomerList,orderList, mainWindow.con);
@@ -78,7 +64,6 @@ namespace crud
         {
             insertCustomer CustomerWindow = new insertCustomer(this,false);
             CustomerWindow.ShowDialog();
-
         }
 
         void CreateOrderButton(object sender, RoutedEventArgs e)
@@ -90,7 +75,6 @@ namespace crud
 
         void UpdateButton(object sender, RoutedEventArgs e)
         {
-
             //Actualizar desde la lista de todos los pedidos
             if (allOrdersList.SelectedValue != null)
             {
@@ -124,10 +108,7 @@ namespace crud
             }
 
             //No seleccionar nada
-            else
-            {
-                MessageBox.Show("Selecciona algun pedido o cliente");
-            }
+            else { MessageBox.Show("Selecciona algun pedido o cliente"); }
 
             //Refrescar las tablas
             read.ShowAllCustomers(allOrdersList, mainWindow.con);
@@ -136,11 +117,7 @@ namespace crud
         }
 
         //------------------------------------------------------------------------------------
-        void CustomerListMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            read.ShowOrders(CustomerList,orderList,mainWindow.con);
-        }
-
+        void CustomerListMouseDoubleClick(object sender, MouseButtonEventArgs e) { read.ShowOrders(CustomerList, orderList, mainWindow.con); }
 
         private void windowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -149,10 +126,6 @@ namespace crud
             mainWindow.closedConnectionMessage();
         }
         
-        void Disconnect(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+        void Disconnect(object sender, RoutedEventArgs e) { this.Close(); }
     }
 }

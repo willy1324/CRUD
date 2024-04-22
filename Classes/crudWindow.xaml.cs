@@ -75,7 +75,7 @@ namespace crud
         void createCustomerButton(object sender, RoutedEventArgs e)
         {
             insertCustomer CustomerWindow = new insertCustomer(this);
-            CustomerWindow.Show();
+            CustomerWindow.ShowDialog();
 
         }
 

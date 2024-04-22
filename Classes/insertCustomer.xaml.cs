@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using crud.Classes.create;
 using crud.Classes.read;
+using static Mysqlx.Crud.Order.Types;
 
 namespace crud
 {
@@ -33,9 +34,18 @@ namespace crud
 
         void addCustomer(object sender, RoutedEventArgs e)
         {
-            create.InsertCustomer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
-            read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
-            this.Close();
+            if (nameTb.Text == "" || directionTb.Text == "" || cityTb.Text == "" || phoneTb.Text == "")
+            {
+                MessageBox.Show("Hay un Campo sin rellenar");
+            }
+            else
+            {
+                create.InsertCustomer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
+                read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
+                this.Close();
+            }
+
+          
         }
 
         void cancelButton(object sender, RoutedEventArgs e)

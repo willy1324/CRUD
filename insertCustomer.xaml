@@ -29,7 +29,7 @@
         <TextBox Name="cityTb" Margin="20" Grid.Row="2" Grid.Column="1"></TextBox>
         <TextBox Name="phoneTb" Margin="20" Grid.Row="3" Grid.Column="1"></TextBox>
 
-        <Button Click="addCustomer" Margin="80,0,0,0" Grid.Row="4" Grid.ColumnSpan="2" Content="Agregar Cliente" Height="70" Width="140" HorizontalAlignment="Left"></Button>
+        <Button Name="addButton" Click="addCustomer" Margin="80,0,0,0" Grid.Row="4" Grid.ColumnSpan="2" Content="Agregar Cliente" Height="70" Width="140" HorizontalAlignment="Left"></Button>
         <Button Click="cancelButton" Margin="0,0,80,0" Grid.Row="4" Grid.ColumnSpan="2" Content="Cancelar" Height="70" Width="140" HorizontalAlignment="Right"></Button>
 
 

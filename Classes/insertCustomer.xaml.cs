@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using crud.Classes.create;
 using crud.Classes.read;
+using crud.Classes.update;
 using static Mysqlx.Crud.Order.Types;
 
 namespace crud
@@ -26,13 +27,35 @@ namespace crud
         crudWindow crudWindow;
         Create create = new Create();
         Read read = new Read();
-        public insertCustomer(crudWindow parentWindow)
+        Update update = new Update();
+
+        bool editMode;
+
+        public insertCustomer(crudWindow parentWindow, bool editMode)
         {
             InitializeComponent();
             crudWindow = parentWindow;
+            this.editMode = editMode;
+
+            if (editMode) { EditModeTrue(); }
         }
 
         void addCustomer(object sender, RoutedEventArgs e)
+        {
+            switch (editMode)
+            {
+                case true:
+                    modifyCustomer();
+                    break;
+
+                case false:
+                    newCustomer();
+                    break;
+            }
+       
+        }
+
+        void newCustomer()
         {
             if (nameTb.Text == "" || directionTb.Text == "" || cityTb.Text == "" || phoneTb.Text == "")
             {
@@ -42,10 +65,30 @@ namespace crud
             {
                 create.InsertCustomer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
                 read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
+                MessageBox.Show("Nuevo cliente agregado");
                 this.Close();
             }
+        }
 
-          
+        void modifyCustomer()
+        {
+            if (nameTb.Text == "" || directionTb.Text == "" || cityTb.Text == "" || phoneTb.Text == "")
+            {
+                MessageBox.Show("Hay un Campo sin rellenar");
+            }
+            else
+            {
+                update.UpdateCostumer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
+                read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
+                MessageBox.Show("Cliente modificado con exito");
+                this.Close();
+            }
+        }
+
+        public void EditModeTrue()
+        {
+            this.Title = "Actualizar un cliente";
+            addButton.Content = "Editar cliente";
         }
 
         void cancelButton(object sender, RoutedEventArgs e)

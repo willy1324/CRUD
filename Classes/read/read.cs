@@ -96,5 +96,39 @@ namespace crud.Classes.read
 
         }
 
+
+        public void ReadCustomerOnEditMode (ListBox CustomerList, MySqlConnection con, insertCustomer EditWindow)
+        {
+            string query = "SELECT nombre, direccion, poblacion, telefono FROM cliente " +
+                           "WHERE ID = @ClienteID";
+
+            MySqlCommand command = new MySqlCommand(query, con);
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+
+            try
+            {
+                using (dataAdapter)
+                {
+                    //Crea el parametro ClienteID y lo rellena con la tabla de CustomerList
+                    command.Parameters.AddWithValue("ClienteID", CustomerList.SelectedValue);
+                    DataTable CustomerTable = new DataTable();
+
+                    //Rellena la informacion del formulario de la ventana con la tabla
+                    dataAdapter.Fill(CustomerTable);
+                    EditWindow.nameTb.Text = CustomerTable.Rows[0]["nombre"].ToString();
+                    EditWindow.directionTb.Text = CustomerTable.Rows[0]["direccion"].ToString();
+                    EditWindow.cityTb.Text = CustomerTable.Rows[0]["poblacion"].ToString();
+                    EditWindow.phoneTb.Text = CustomerTable.Rows[0]["telefono"].ToString();
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
     }
+    
 }

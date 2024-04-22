@@ -51,6 +51,11 @@ namespace crud
             }
         }
 
+        void Persona3FESEasterEgg()
+        {
+            
+        }
+
         public void closedConnectionMessage()
         {
             MessageBox.Show("¡Conexión cerrada con exito");

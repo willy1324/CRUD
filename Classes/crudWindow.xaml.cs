@@ -81,7 +81,8 @@ namespace crud
 
         void createOrderButton(object sender, RoutedEventArgs e)
         {
-
+            insertOrders OrderWindow = new insertOrders(this);
+            OrderWindow.ShowDialog();
         }
 
         //------------------------------------------------------------------------------------

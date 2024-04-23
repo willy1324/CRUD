@@ -18,7 +18,7 @@ namespace crud.Classes.read
 
             try
             {
-                string query = "SELECT * FROM cliente";
+                string query = "SELECT *, CONCAT(ID,'   ',nombre) AS infoCliente FROM cliente";
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
                 using (dataAdapter)
@@ -27,7 +27,7 @@ namespace crud.Classes.read
 
                     //Rellenando tabla
                     dataAdapter.Fill(CustomerTable);
-                    CustomerList.DisplayMemberPath = "nombre";
+                    CustomerList.DisplayMemberPath = "infoCliente";
                     CustomerList.SelectedValuePath = "ID";
                     CustomerList.ItemsSource = CustomerTable.DefaultView;
                 }
@@ -45,7 +45,9 @@ namespace crud.Classes.read
 
             try
             {
-                string query = "SELECT * FROM pedido P INNER JOIN cliente C ON C.ID = P.cCliente WHERE C.ID = @ClienteID";
+                string query = "SELECT P.*, A.nombreArticulo, CONCAT(P.ID,'   ',A.nombreArticulo,'   ',P.fechaPedido, '   ', P.formaPago) AS datoPedido FROM pedido P " +
+                               "INNER JOIN cliente C ON C.ID = P.cCliente " +
+                               "LEFT JOIN articulo A ON P.cCliente = A.ID WHERE C.ID = @ClienteID";
 
                 MySqlCommand command = new MySqlCommand(query, con);
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
@@ -57,7 +59,7 @@ namespace crud.Classes.read
 
                     //Rellenando tabla
                     dataAdapter.Fill(ordersTable);
-                    orderList.DisplayMemberPath = "fechaPedido";
+                    orderList.DisplayMemberPath = "datoPedido";
                     orderList.SelectedValuePath = "ID";
                     orderList.ItemsSource = ordersTable.DefaultView;
                 }
@@ -74,7 +76,9 @@ namespace crud.Classes.read
         {
             try
             {
-                string query = "SELECT *, CONCAT(cCliente,'   ', fechaPedido, '   ', formaPago) AS infoCompleta FROM pedido";
+                string query = "SELECT P.*, A.nombreArticulo, CONCAT(P.ID,'   ',A.nombreArticulo,'  ',P.fechaPedido,'  ', P.formaPago) " +
+                               "AS infoCompleta FROM pedido P LEFT JOIN articulo A ON P.cArticulo = A.ID";
+
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
 
                 using (dataAdapter)

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:crud"
         mc:Ignorable="d"
         Closing="windowClosing"
-        Title="Gestion de pedidos" Height="450" Width="900" WindowStyle="ThreeDBorderWindow"
+        Title="Gestion de pedidos" Height="550" Width="1200" WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen">
 
     <Grid Background="#171336">
@@ -20,9 +20,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="350"></ColumnDefinition>
+                <ColumnDefinition Width="1.2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <!--Clientes-->
             <Label  FontSize="30" Foreground="#cfe2ee" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Clientes" Grid.Column="0" FontFamily="Bahnschrift"></Label>
             <Label FontSize="30" Foreground="#cfe2ee" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Pedidos" Grid.Column="1" FontFamily="Bahnschrift"></Label>
@@ -38,9 +38,6 @@
             <Button FontSize="14" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Margin="10" Click="CreateOrderButton" Grid.Row="3" Grid.Column="0" Height="40" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Insertar Pedido"></Button>
             <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Margin="10" Click="UpdateButton" Grid.Row="3" Grid.Column="1" Height="40" Width="100" HorizontalAlignment="left" VerticalAlignment="Top" Content="Actualizar"></Button>
             <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Margin="10" Click="DeleteButton" Grid.Row="3" Grid.Column="1" Height="40" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Borrar"></Button>
-            
-
-
         </Grid>
 
         <Button Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Click="Disconnect" Margin="10" Content="Desconectar" Height="40" Width="90" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>

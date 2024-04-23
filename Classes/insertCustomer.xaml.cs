@@ -79,9 +79,9 @@ namespace crud
             }
             else
             {
-                update.UpdateCostumer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
+                update.UpdateCostumer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb, this);
                 read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
-                MessageBox.Show("Cliente modificado con exito");
+                MessageBox.Show($"Cliente de ID {IDSetter()} modificado con exito");
                 this.Close();
             }
         }
@@ -92,7 +92,8 @@ namespace crud
             addButton.Content = "Editar cliente";
         }
 
-        public void IDGetter(string id) { customerId = id; }
+        public void IDGetter(string id) { customerId = id;}
+        public string IDSetter() { return customerId; }
 
         void cancelButton(object sender, RoutedEventArgs e) { this.Close(); }
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Microsoft.Data.Sqlite;
 using System.Data;
 using System.Windows.Controls;
 

@@ -77,7 +77,7 @@ namespace crud {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/crud;component/crudwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/crud;V1.0.0.0;component/crudwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\crudWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

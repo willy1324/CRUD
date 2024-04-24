@@ -48,7 +48,7 @@ namespace crud.Classes.read
 
             try
             {
-                string query = "SELECT P.*, A.nombreArticulo || '   ' || P.ID || '   ' || A.nombreArticulo || '   ' || P.fechaPedido || '   ' || P.formaPago AS datoPedido " +
+                string query = "SELECT P.*, P.ID || '   ' || A.nombreArticulo || '   ' || P.fechaPedido || '   ' || P.formaPago AS datoPedido " +
                                "FROM pedido P " +
                                "INNER JOIN cliente C ON C.ID = P.cCliente " +
                                "LEFT JOIN articulo A ON P.cCliente = A.ID " +
@@ -81,8 +81,9 @@ namespace crud.Classes.read
         {
             try
             {
-                string query = "SELECT P.*, P.ID || '   ' || A.nombreArticulo ||'  ' || P.fechaPedido || '  ' || P.formaPago " +
-                               "AS infoCompleta FROM pedido P LEFT JOIN articulo A ON P.cArticulo = A.ID";
+                string query = "SELECT *, p.ID || '  ' || a.nombreArticulo || '  ' || p.fechaPedido AS pedidoCompleto " +
+                                "FROM pedido p " +
+                                "LEFT JOIN articulo A ON p.cCliente = a.ID ";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
@@ -92,7 +93,7 @@ namespace crud.Classes.read
 
                     //Rellenando tabla
                     dataAdapter.Fill(allOrdersTable);
-                    allOrdersList.DisplayMemberPath = "infoCompleta";
+                    allOrdersList.DisplayMemberPath = "pedidoCompleto";
                     allOrdersList.SelectedValuePath = "ID";
                     allOrdersList.ItemsSource = allOrdersTable.DefaultView;
                 }

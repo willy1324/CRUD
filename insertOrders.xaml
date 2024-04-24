@@ -15,24 +15,27 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="160"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="0" Content="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="1" Content="Dirección" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="2" Content="Población" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="3" Content="Telefono" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="0" Content="Cliente" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="1" Content="Articulo" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="2" Content="Fecha pedido" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="3" Content="Forma Pago" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="4" Content="Cantidad" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        
+        <ComboBox Name="costumerCb" Margin="20" Grid.Row="0" Grid.Column="1"></ComboBox>
+        <ComboBox Name="articleCb" Margin="20" Grid.Row="1" Grid.Column="1"></ComboBox>
+        <TextBox Name="orderDateTb" Margin="20" Grid.Row="2" Grid.Column="1"></TextBox>
+        <TextBox Name="methodOfPayTb" Margin="20" Grid.Row="3" Grid.Column="1"></TextBox>
+        <TextBox Name="quantityTb" Margin="20" Grid.Row="4" Grid.Column="1"></TextBox>
 
-        <TextBox Name="nameTb" Margin="20" Grid.Row="0" Grid.Column="1"></TextBox>
-        <TextBox Name="directionTb" Margin="20" Grid.Row="1" Grid.Column="1"></TextBox>
-        <TextBox Name="cityTb" Margin="20" Grid.Row="2" Grid.Column="1"></TextBox>
-        <TextBox Name="phoneTb" Margin="20" Grid.Row="3" Grid.Column="1"></TextBox>
-
-        <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Name="addButton" Click="addCustomer" Margin="80,0,0,0" Grid.Row="4" Grid.ColumnSpan="2" Content="Agregar Cliente" Height="70" Width="140" HorizontalAlignment="Left"></Button>
-        <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Click="cancelButton" Margin="0,0,80,0" Grid.Row="4" Grid.ColumnSpan="2" Content="Cancelar" Height="70" Width="140" HorizontalAlignment="Right"></Button>
+        <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Name="addButton" Click="addOrder" Margin="80,0,0,0" Grid.Row="5" Grid.ColumnSpan="2" Content="Agregar Pedido" Height="70" Width="140" HorizontalAlignment="Left"></Button>
+        <Button FontSize="15" Foreground="#cfe2ee" Background="#171336" BorderBrush="#cfe2ee" Click="cancelButton" Margin="0,0,80,0" Grid.Row="5" Grid.ColumnSpan="2" Content="Cancelar" Height="70" Width="140" HorizontalAlignment="Right"></Button>
     </Grid>
     
 </Window>

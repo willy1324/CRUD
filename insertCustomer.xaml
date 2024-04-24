@@ -21,7 +21,7 @@
 
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="0" Content="Nombre" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="1" Content="Dirección" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="2" Content="Población" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="2" Content="Ciudad" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="3" Content="Telefono" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
 
         <TextBox Name="nameTb" Margin="20" Grid.Row="0" Grid.Column="1"></TextBox>

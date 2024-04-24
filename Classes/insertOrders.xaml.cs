@@ -25,22 +25,23 @@ namespace crud
         Create create = new Create();
         Read read = new Read();
 
-        public insertOrders(crudWindow parentWindow)
+        bool editMode;
+
+        public insertOrders(crudWindow parentWindow, bool editMode)
         {
             InitializeComponent();
             crudWindow = parentWindow;
         }
 
-        void addCustomer(object sender, RoutedEventArgs e)
+        void addOrder(object sender, RoutedEventArgs e)
         {
-            if (nameTb.Text == "" || directionTb.Text == "" || cityTb.Text == "" || phoneTb.Text == "")
+            if (orderDateTb.Text == "" || methodOfPayTb.Text == "" || quantityTb.Text == "")
             {
                 MessageBox.Show("Hay un Campo sin rellenar");
             }
             else
             {
-                create.InsertCustomer(crudWindow.mainWindow.con, nameTb, directionTb, cityTb, phoneTb);
-                read.ShowCustomers(crudWindow.CustomerList, crudWindow.mainWindow.con);
+                MessageBox.Show("Implementando...");
                 this.Close();
             }
 

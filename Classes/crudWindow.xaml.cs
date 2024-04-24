@@ -69,9 +69,8 @@ namespace crud
 
         void CreateOrderButton(object sender, RoutedEventArgs e)
         {
-            //insertOrders OrderWindow = new insertOrders(this);
-            //OrderWindow.ShowDialog();
-            MessageBox.Show("Implementando...");
+            insertOrders OrderWindow = new insertOrders(this,false);
+            OrderWindow.ShowDialog();
         }
 
         void UpdateButton(object sender, RoutedEventArgs e)

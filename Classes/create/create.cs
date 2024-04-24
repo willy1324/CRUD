@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System.Data.SQLite;
 using static Mysqlx.Crud.Order.Types;
 using System.Windows.Controls;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace crud.Classes.create
 {
@@ -30,6 +31,19 @@ namespace crud.Classes.create
 
                     command.ExecuteNonQuery();
                 }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void InsertOrder(SQLiteConnection con, ComboBox costumerCb, ComboBox orderCb, ListBox orderDateTb, ListBox methodOfPayTb, ListBox quantityTb)
+        {
+            try
+            {
+                MessageBox.Show("Implementando...");
             }
 
             catch (Exception ex)

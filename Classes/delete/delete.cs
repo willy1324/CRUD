@@ -26,7 +26,9 @@ namespace crud.Classes.delete
 
                 if (deleteConfirm == MessageBoxResult.Yes)
                 {
-                    string query = "DELETE FROM pedido WHERE ID = @orderToDelete";
+                    string query = "DELETE FROM pedido " +
+                                   "WHERE ID = @orderToDelete";
+
                     SQLiteCommand command = new SQLiteCommand(query, con);
 
                     command.Parameters.AddWithValue("@orderToDelete", Order.SelectedValue);

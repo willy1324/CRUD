@@ -21,7 +21,9 @@ namespace crud.Classes.read
 
             try
             {
-                string query = "SELECT *, ID || '   ' || nombre AS infoCliente FROM cliente";
+                string query = "SELECT *, ID || '   ' || nombre AS infoCliente " +
+                               "FROM cliente";
+
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
                 using (dataAdapter)
@@ -48,10 +50,10 @@ namespace crud.Classes.read
 
             try
             {
-                string query = "SELECT P.*, P.ID || '   ' || A.nombreArticulo || '   ' || P.fechaPedido || '   ' || P.formaPago AS datoPedido " +
-                               "FROM pedido P " +
-                               "INNER JOIN cliente C ON C.ID = P.cCliente " +
-                               "LEFT JOIN articulo A ON P.cCliente = A.ID " +
+                string query = "SELECT p.*, p.ID || '   ' || a.nombreArticulo || '   ' || p.fechaPedido || '   ' || p.formaPago AS datoPedido " +
+                               "FROM pedido p " +
+                               "INNER JOIN cliente c ON c.ID = P.cCliente " +
+                               "LEFT JOIN articulo a ON p.cArticulo = a.ID " +
                                "WHERE C.ID = @ClienteID";
 
                 SQLiteCommand command = new SQLiteCommand(query, con);
@@ -82,9 +84,9 @@ namespace crud.Classes.read
             try
             {
                 string query = "SELECT *, p.ID || '  ' || c.nombre || '  ' || a.nombreArticulo || '  ' || p.fechaPedido || '  ' || formaPago || '  ' || cantidad AS pedidoCompleto " +
-                                "FROM pedido p " +
-                                "LEFT JOIN articulo a ON p.cArticulo = a.ID " +
-                                "LEFT JOIN cliente c ON p.cCliente = c.ID";
+                               "FROM pedido p " +
+                               "LEFT JOIN articulo a ON p.cArticulo = a.ID " +
+                               "LEFT JOIN cliente c ON p.cCliente = c.ID";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
@@ -146,7 +148,8 @@ namespace crud.Classes.read
 
         public void ReadOrderComboBox(ComboBox combobox, SQLiteConnection con , string dbTable, string displayPath)
         {
-            string query = $"SELECT ID, {displayPath} FROM {dbTable}";
+            string query = $"SELECT ID, {displayPath} " +
+                           $"FROM {dbTable}";
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
             try

@@ -5,22 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using Microsoft.Data.Sqlite;
 using System.Data;
 using System.Windows.Controls;
+using System.Data.SQLite;
+using MySqlX.XDevAPI;
+using System.Windows.Controls.Primitives;
 
 namespace crud.Classes.read
 {
 
     public class Read
     {
-        public void ShowCustomers(ListBox CustomerList, MySqlConnection con)
+        public void ShowCustomers(ListBox CustomerList, SQLiteConnection con)
         {
 
             try
             {
-                string query = "SELECT *, CONCAT(ID,'   ',nombre) AS infoCliente FROM cliente";
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
+                string query = "SELECT *, ID || '   ' || nombre AS infoCliente FROM cliente";
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
                 using (dataAdapter)
                 {
@@ -41,17 +43,19 @@ namespace crud.Classes.read
             
         }
 
-        public void ShowOrders(ListBox CustomerList, ListBox orderList, MySqlConnection con)
+        public void ShowOrders(ListBox CustomerList, ListBox orderList, SQLiteConnection con)
         {
 
             try
             {
-                string query = "SELECT P.*, A.nombreArticulo, CONCAT(P.ID,'   ',A.nombreArticulo,'   ',P.fechaPedido, '   ', P.formaPago) AS datoPedido FROM pedido P " +
+                string query = "SELECT P.*, A.nombreArticulo || '   ' || P.ID || '   ' || A.nombreArticulo || '   ' || P.fechaPedido || '   ' || P.formaPago AS datoPedido " +
+                               "FROM pedido P " +
                                "INNER JOIN cliente C ON C.ID = P.cCliente " +
-                               "LEFT JOIN articulo A ON P.cCliente = A.ID WHERE C.ID = @ClienteID";
+                               "LEFT JOIN articulo A ON P.cCliente = A.ID " +
+                               "WHERE C.ID = @ClienteID";
 
-                MySqlCommand command = new MySqlCommand(query, con);
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+                SQLiteCommand command = new SQLiteCommand(query, con);
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
                 using (dataAdapter)
                 {
@@ -73,14 +77,14 @@ namespace crud.Classes.read
            
         }
 
-        public void ShowAllCustomers(ListBox allOrdersList, MySqlConnection con)
+        public void ShowAllOrders(ListBox allOrdersList, SQLiteConnection con)
         {
             try
             {
-                string query = "SELECT P.*, A.nombreArticulo, CONCAT(P.ID,'   ',A.nombreArticulo,'  ',P.fechaPedido,'  ', P.formaPago) " +
+                string query = "SELECT P.*, P.ID || '   ' || A.nombreArticulo ||'  ' || P.fechaPedido || '  ' || P.formaPago " +
                                "AS infoCompleta FROM pedido P LEFT JOIN articulo A ON P.cArticulo = A.ID";
 
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, con);
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
                 using (dataAdapter)
                 {
@@ -102,13 +106,13 @@ namespace crud.Classes.read
         }
 
 
-        public void ReadCustomerOnEditMode (ListBox CustomerList, MySqlConnection con, insertCustomer EditWindow)
+        public void ReadCustomerOnEditMode (ListBox CustomerList, SQLiteConnection con, insertCustomer EditWindow)
         {
             string query = "SELECT id, nombre, direccion, poblacion, telefono FROM cliente " +
                            "WHERE ID = @ClienteID";
 
-            MySqlCommand command = new MySqlCommand(query, con);
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+            SQLiteCommand command = new SQLiteCommand(query, con);
+            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
 
             try
             {

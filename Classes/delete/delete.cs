@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +16,7 @@ namespace crud.Classes.delete
 {
     public class Delete
     {
-        public void DeleteOrder(ListBox Order, MySqlConnection con)
+        public void DeleteOrder(ListBox Order, SQLiteConnection con)
         {
 
             try
@@ -26,7 +27,7 @@ namespace crud.Classes.delete
                 if (deleteConfirm == MessageBoxResult.Yes)
                 {
                     string query = "DELETE FROM pedido WHERE ID = @orderToDelete";
-                    MySqlCommand command = new MySqlCommand(query, con);
+                    SQLiteCommand command = new SQLiteCommand(query, con);
 
                     command.Parameters.AddWithValue("@orderToDelete", Order.SelectedValue);
                     command.ExecuteNonQuery();
@@ -42,7 +43,7 @@ namespace crud.Classes.delete
             
         }
 
-        public void DeleteCustomer(ListBox Customer, MySqlConnection con)
+        public void DeleteCustomer(ListBox Customer, SQLiteConnection con)
         {
             try
             {
@@ -52,7 +53,7 @@ namespace crud.Classes.delete
                 if (deleteConfirm == MessageBoxResult.Yes)
                 {
                     string query = "DELETE FROM cliente WHERE ID = @customerToDelete";
-                    MySqlCommand command = new MySqlCommand(query, con);
+                    SQLiteCommand command = new SQLiteCommand(query, con);
 
                     command.Parameters.AddWithValue("@customerToDelete", Customer.SelectedValue);
                     command.ExecuteNonQuery();

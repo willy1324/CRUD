@@ -45,10 +45,6 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "Microsoft.Data.Sqlite.Core": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.3.0, )"
@@ -60,6 +56,10 @@
             "MySql.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.118, )"
             }
           },
           "imports": [

@@ -7,13 +7,14 @@ using System.Windows;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Data;
+using System.Data.SQLite;
 
 namespace crud.Classes.update
 {
     public class Update
     {
 
-        public void UpdateCostumer(MySqlConnection con, TextBox nameTb, TextBox directionTb, TextBox cityTb, TextBox phoneTb, insertCustomer EditWindow)
+        public void UpdateCostumer(SQLiteConnection con, TextBox nameTb, TextBox directionTb, TextBox cityTb, TextBox phoneTb, insertCustomer EditWindow)
         {
             string query = "UPDATE cliente " +
                            "SET nombre = @Name, direccion = @Direction, poblacion = @City, telefono = @Phone " +
@@ -21,7 +22,7 @@ namespace crud.Classes.update
 
             try
             {
-                using (MySqlCommand command = new MySqlCommand(query, con))
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@Name",nameTb.Text);
                     command.Parameters.AddWithValue("@Direction", directionTb.Text);
@@ -37,7 +38,7 @@ namespace crud.Classes.update
 
         }
 
-        public void UpdateOrder(ListBox CustomerList, MySqlConnection con)
+        public void UpdateOrder(ListBox CustomerList, SQLiteConnection con)
         {
             try
             {

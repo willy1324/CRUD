@@ -93,7 +93,7 @@ namespace crud {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/crud;V1.0.0.0;component/insertorders.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/crud;component/insertorders.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\insertOrders.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

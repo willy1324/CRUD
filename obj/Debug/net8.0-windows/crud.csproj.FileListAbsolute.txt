@@ -63,3 +63,9 @@ G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\refint\cr
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\crud.pdb
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\crud.genruntimeconfig.cache
 G:\Documents\Programación\C#\repos\crud\crud\obj\Debug\net8.0-windows\ref\crud.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\System.Data.SQLite.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\System.Data.SQLite.EF6.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+G:\Documents\Programación\C#\repos\crud\crud\bin\Debug\net8.0-windows\runtimes\win-x86\native\SQLite.Interop.dll

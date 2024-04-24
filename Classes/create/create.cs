@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 using static Mysqlx.Crud.Order.Types;
 using System.Windows.Controls;
 
@@ -13,18 +14,18 @@ namespace crud.Classes.create
     public class Create
     {
 
-        public void InsertCustomer(MySqlConnection con, TextBox nameTb, TextBox directionTb, TextBox cityTb, TextBox phoneTb)
+        public void InsertCustomer(SQLiteConnection con, TextBox nameTb, TextBox directionTb, TextBox cityTb, TextBox phoneTb)
         {
-            string query = "INSERT INTO cliente(nombre, direccion, poblacion, telefono) " +
-                           "VALUES (@nombre, @direccion, @poblacion, @telefono)";
+            string query = "INSERT INTO cliente(nombre, direccion, ciudad, telefono) " +
+                           "VALUES (@nombre, @direccion, @ciudad, @telefono)";
 
             try
             {
-                using (MySqlCommand command = new MySqlCommand(query, con))
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@nombre", nameTb.Text);
                     command.Parameters.AddWithValue("@direccion", directionTb.Text);
-                    command.Parameters.AddWithValue("@poblacion", cityTb.Text);
+                    command.Parameters.AddWithValue("@ciudad", cityTb.Text);
                     command.Parameters.AddWithValue("@telefono", phoneTb.Text);
 
                     command.ExecuteNonQuery();

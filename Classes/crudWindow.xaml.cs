@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 using crud.Classes.create;
 using crud.Classes.read;
 using crud.Classes.update;
@@ -32,7 +33,7 @@ namespace crud
         {
             InitializeComponent();
             read.ShowCustomers(CustomerList,mainWindow.con);
-            read.ShowAllCustomers(allOrdersList,mainWindow.con);
+            read.ShowAllOrders(allOrdersList,mainWindow.con);
         }
 
 
@@ -55,7 +56,7 @@ namespace crud
             else { MessageBox.Show("Selecciona algun pedido o cliente"); }
                        
             //Refrescar las tablas
-            read.ShowAllCustomers(allOrdersList, mainWindow.con);
+            read.ShowAllOrders(allOrdersList, mainWindow.con);
             read.ShowOrders(CustomerList,orderList, mainWindow.con);
             read.ShowCustomers(CustomerList, mainWindow.con);
         }
@@ -111,7 +112,7 @@ namespace crud
             else { MessageBox.Show("Selecciona algun pedido o cliente"); }
 
             //Refrescar las tablas
-            read.ShowAllCustomers(allOrdersList, mainWindow.con);
+            read.ShowAllOrders(allOrdersList, mainWindow.con);
             read.ShowOrders(CustomerList, orderList, mainWindow.con);
             read.ShowCustomers(CustomerList, mainWindow.con);
         }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data.SQLite;
 using Mysqlx;
 using System.Text;
 using System.Windows;
@@ -10,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace crud
 {
@@ -19,7 +21,7 @@ namespace crud
     public partial class MainWindow : Window
     {
 
-        public MySqlConnection con = new MySqlConnection();
+        public SQLiteConnection con = new SQLiteConnection();
         private string constring;
 
         public MainWindow()
@@ -29,7 +31,7 @@ namespace crud
         
         private void ConnectToSql(object sender, RoutedEventArgs e)
         {
-            constring = $"server=localhost;uid={tBuser.Text};pwd={tBpwD.Password};database=gestionpedidos";
+            constring = $"Data Source=G:/Documents/Programación/C#/repos/crud/crud/db/gestionPedidos.db;Version=3;"; 
             con.ConnectionString = constring;
 
             try 

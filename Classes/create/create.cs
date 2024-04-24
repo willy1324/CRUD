@@ -14,7 +14,6 @@ namespace crud.Classes.create
 {
     public class Create
     {
-
         public void InsertCustomer(SQLiteConnection con, TextBox nameTb, TextBox directionTb, TextBox cityTb, TextBox phoneTb)
         {
             string query = "INSERT INTO cliente(nombre, direccion, ciudad, telefono) " +
@@ -39,11 +38,22 @@ namespace crud.Classes.create
             }
         }
 
-        public void InsertOrder(SQLiteConnection con, ComboBox costumerCb, ComboBox orderCb, ListBox orderDateTb, ListBox methodOfPayTb, ListBox quantityTb)
+        public void InsertOrder(SQLiteConnection con, string customerID, string articleID, TextBox orderDateTb, TextBox methodOfPayTb, TextBox quantityTb)
         {
+            string query = "INSERT INTO pedido(cCliente, cArticulo, fechaPedido, formaPago, cantidad) " +
+                           "VALUES (@cCliente, @cArticulo, @fechaPedido, @formaPago, @cantidad)";
             try
             {
-                MessageBox.Show("Implementando...");
+                using (SQLiteCommand command = new SQLiteCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@cCliente", customerID);
+                    command.Parameters.AddWithValue("@cArticulo", articleID);
+                    command.Parameters.AddWithValue("@fechaPedido", orderDateTb.Text);
+                    command.Parameters.AddWithValue("@formaPago", methodOfPayTb.Text);
+                    command.Parameters.AddWithValue("@cantidad", quantityTb.Text);
+
+                    command.ExecuteNonQuery();
+                }
             }
 
             catch (Exception ex)

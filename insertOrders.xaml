@@ -27,9 +27,9 @@
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="2" Content="Fecha pedido" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="3" Content="Forma Pago" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
         <Label FontSize="20" Foreground="#cfe2ee" Grid.Row="4" Content="Cantidad" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        
-        <ComboBox Name="costumerCb" Margin="20" Grid.Row="0" Grid.Column="1"></ComboBox>
-        <ComboBox Name="articleCb" Margin="20" Grid.Row="1" Grid.Column="1"></ComboBox>
+
+        <ComboBox Name="customerCb" SelectionChanged="customerCb_SelectionChanged" Margin="20" Grid.Row="0" Grid.Column="1"></ComboBox>
+        <ComboBox Name="articleCb" SelectionChanged="articleCb_SelectionChanged" Margin="20" Grid.Row="1" Grid.Column="1"></ComboBox>
         <TextBox Name="orderDateTb" Margin="20" Grid.Row="2" Grid.Column="1"></TextBox>
         <TextBox Name="methodOfPayTb" Margin="20" Grid.Row="3" Grid.Column="1"></TextBox>
         <TextBox Name="quantityTb" Margin="20" Grid.Row="4" Grid.Column="1"></TextBox>

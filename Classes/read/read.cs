@@ -81,9 +81,10 @@ namespace crud.Classes.read
         {
             try
             {
-                string query = "SELECT *, p.ID || '  ' || a.nombreArticulo || '  ' || p.fechaPedido AS pedidoCompleto " +
+                string query = "SELECT *, p.ID || '  ' || c.nombre || '  ' || a.nombreArticulo || '  ' || p.fechaPedido || '  ' || formaPago || '  ' || cantidad AS pedidoCompleto " +
                                 "FROM pedido p " +
-                                "LEFT JOIN articulo A ON p.cCliente = a.ID ";
+                                "LEFT JOIN articulo a ON p.cArticulo = a.ID " +
+                                "LEFT JOIN cliente c ON p.cCliente = c.ID";
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
 
@@ -141,6 +142,34 @@ namespace crud.Classes.read
             }
 
         }
+
+
+        public void ReadOrderComboBox(ComboBox combobox, SQLiteConnection con , string dbTable, string displayPath)
+        {
+            string query = $"SELECT ID, {displayPath} FROM {dbTable}";
+            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, con);
+
+            try
+            {
+                using (dataAdapter)
+                {
+                    DataTable CustomerTable = new DataTable();
+
+                    //Rellenando tabla
+                    dataAdapter.Fill(CustomerTable);
+                    combobox.DisplayMemberPath = displayPath;
+                    combobox.SelectedValuePath = "ID";
+                    combobox.ItemsSource = CustomerTable.DefaultView;
+                }
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e.ToString());
+            }
+          
+        }
+
     }
     
 }

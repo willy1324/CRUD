@@ -1,5 +1,6 @@
 ﻿using crud.Classes.create;
 using crud.Classes.read;
+using crud.Classes.update;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,8 +26,10 @@ namespace crud
         crudWindow crudWindow;
         Create create = new Create();
         Read read = new Read();
+        Update update = new Update();
         string customerID;
         string articleID;
+        string orderID;
         const string customerTable = "cliente";
         const string articleTable = "articulo";
         const string customerDisplay = "nombre";
@@ -42,6 +45,14 @@ namespace crud
             read.ReadOrderComboBox(customerCb,crudWindow.mainWindow.con,customerTable, customerDisplay);
             //Cargar articulos en combobox
             read.ReadOrderComboBox(articleCb, crudWindow.mainWindow.con, articleTable, articleDisplay);
+            this.editMode = editMode;
+
+            if (editMode) 
+            { 
+                EditModeTrue();
+                customerCb.SelectedValue = customerID;
+                articleCb.SelectedValue = articleID;
+            }
         }
 
         void addOrder(object sender, RoutedEventArgs e)
@@ -61,7 +72,7 @@ namespace crud
 
         void newOrder()
         {
-            if (orderDateTb.Text == "" || methodOfPayTb.Text == "" || quantityTb.Text == "")
+            if (customerID == "" || articleID == "" || orderDateTb.Text == "" || methodOfPayTb.Text == "" || quantityTb.Text == "")
             {
                 MessageBox.Show("Hay un Campo sin rellenar");
             }
@@ -75,20 +86,28 @@ namespace crud
 
         void modifyOrder()
         {
-            if (orderDateTb.Text == "" || methodOfPayTb.Text == "" || quantityTb.Text == "")
+            if (customerID == "" || articleID == "" || orderDateTb.Text == "" || methodOfPayTb.Text == "" || quantityTb.Text == "")
             {
                 MessageBox.Show("Hay un Campo sin rellenar");
             }
             else
             {
-                MessageBox.Show("Implementando...");
+                update.UpdateOrder(crudWindow.mainWindow.con, customerID, articleID, orderDateTb, methodOfPayTb, quantityTb,this);
+                read.ShowAllOrders(crudWindow.allOrdersList, crudWindow.mainWindow.con);
                 this.Close();
             }
         }
+        
+        public void OrderIDGetter(string id) { orderID = id; }
 
-        void cancelButton(object sender, RoutedEventArgs e)
+        public string OrderIDSetter() { return orderID; }
+
+        void cancelButton(object sender, RoutedEventArgs e) { this.Close(); }
+
+        public void EditModeTrue()
         {
-            this.Close();
+            this.Title = "Actualizar un pedido";
+            addButton.Content = "Editar pedido";
         }
 
         void customerCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

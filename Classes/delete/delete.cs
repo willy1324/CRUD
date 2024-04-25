@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using Mysqlx.Crud;
 
 namespace crud.Classes.delete
 {

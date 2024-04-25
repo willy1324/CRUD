@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
 using System.Data.SQLite;
 using crud.Classes.create;
 using crud.Classes.read;
@@ -81,7 +80,9 @@ namespace crud
                 MessageBoxResult result = MessageBox.Show("¿Estás seguro de que deseas hacer cambios en este pedido?", "Actualizar un pedido", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("Implementando...");
+                    insertOrders OrderWindow = new insertOrders(this, true);
+                    read.ReadOrderOnEditMode(allOrdersList, mainWindow.con, OrderWindow);
+                    OrderWindow.ShowDialog();
                 }
             }
 
@@ -91,7 +92,9 @@ namespace crud
                 MessageBoxResult result = MessageBox.Show("¿Estás seguro de que deseas hacer cambios en este pedido?", "Actualizar un pedido", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("Implementando...");
+                    insertOrders OrderWindow = new insertOrders(this,true);
+                    read.ReadOrderOnEditMode(orderList, mainWindow.con, OrderWindow);
+                    OrderWindow.ShowDialog();
                 }
             }
 

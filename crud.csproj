@@ -9,10 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.3.0" />
-    <PackageReference Include="MySql.Data.EntityFramework" Version="8.3.0" />
-    <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.0" />
+    <None Remove="background\normalSkin\forest.jpg" />
+    <None Remove="background\normalSkin\nightForest.jpg" />
+    <None Remove="background\normalSkin\techno.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="background\normalSkin\forest.jpg" />
+    <Resource Include="background\normalSkin\nightForest.jpg" />
+    <Resource Include="background\normalSkin\techno.jpg" />
   </ItemGroup>
 
 </Project>

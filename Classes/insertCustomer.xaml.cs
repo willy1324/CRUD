@@ -11,11 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
 using crud.Classes.create;
 using crud.Classes.read;
 using crud.Classes.update;
-using static Mysqlx.Crud.Order.Types;
 
 namespace crud
 {

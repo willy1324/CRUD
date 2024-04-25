@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Controls;
 using System.Data.SQLite;
-using MySqlX.XDevAPI;
 using System.Windows.Controls.Primitives;
 
 namespace crud.Classes.read
@@ -112,7 +110,7 @@ namespace crud.Classes.read
 
         public void ReadCustomerOnEditMode (ListBox CustomerList, SQLiteConnection con, insertCustomer EditWindow)
         {
-            string query = "SELECT id, nombre, direccion, poblacion, telefono FROM cliente " +
+            string query = "SELECT id, nombre, direccion, ciudad, telefono FROM cliente " +
                            "WHERE ID = @ClienteID";
 
             SQLiteCommand command = new SQLiteCommand(query, con);
@@ -132,8 +130,44 @@ namespace crud.Classes.read
                     EditWindow.IDGetter(CustomerTable.Rows[0]["id"].ToString());
                     EditWindow.nameTb.Text = CustomerTable.Rows[0]["nombre"].ToString();
                     EditWindow.directionTb.Text = CustomerTable.Rows[0]["direccion"].ToString();
-                    EditWindow.cityTb.Text = CustomerTable.Rows[0]["poblacion"].ToString();
+                    EditWindow.cityTb.Text = CustomerTable.Rows[0]["ciudad"].ToString();
                     EditWindow.phoneTb.Text = CustomerTable.Rows[0]["telefono"].ToString();
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        public void ReadOrderOnEditMode(ListBox OrderList, SQLiteConnection con, insertOrders EditWindow)
+        {
+            string query = "SELECT id, cCliente, cArticulo, fechaPedido, formaPago, cantidad FROM pedido " +
+                           "WHERE ID = @ClienteID";
+
+            SQLiteCommand command = new SQLiteCommand(query, con);
+            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
+
+            try
+            {
+                using (dataAdapter)
+                {
+                    //Crea el parametro ClienteID y lo rellena con la tabla de CustomerList
+                    command.Parameters.AddWithValue("ClienteID", OrderList.SelectedValue);
+                    DataTable CustomerTable = new DataTable();
+
+                    //Rellena la informacion del formulario de la ventana con la tabla
+                    dataAdapter.Fill(CustomerTable);
+                    EditWindow.OrderIDGetter(CustomerTable.Rows[0]["id"].ToString());
+                    EditWindow.customerCb.SelectedValue = CustomerTable.Rows[0]["cCliente"].ToString();
+                    EditWindow.articleCb.SelectedValue = CustomerTable.Rows[0]["cArticulo"].ToString();
+                    EditWindow.orderDateTb.Text = CustomerTable.Rows[0]["fechaPedido"].ToString();
+                    EditWindow.methodOfPayTb.Text = CustomerTable.Rows[0]["formaPago"].ToString();
+                    EditWindow.quantityTb.Text = CustomerTable.Rows[0]["cantidad"].ToString();
+                 
 
                 }
             }

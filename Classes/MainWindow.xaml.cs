@@ -1,7 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System.Data.SQLite;
-using Mysqlx;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using System.Data;
 
 namespace crud
 {
@@ -23,6 +21,7 @@ namespace crud
 
         public SQLiteConnection con = new SQLiteConnection();
         private string constring;
+        bool succesfullLogin = false;
 
         public MainWindow()
         {
@@ -33,10 +32,30 @@ namespace crud
         {
             constring = $"Data Source=G:/Documents/Programación/C#/repos/crud/crud/db/gestionPedidos.db;Version=3;"; 
             con.ConnectionString = constring;
+            con.Open();
+            string query = "SELECT * FROM usuario WHERE usuario = @usuario AND contrasena = @contrasena";
+            SQLiteCommand command = new SQLiteCommand(query,con);
+
+            command.Parameters.AddWithValue("@usuario", userTb.Text);
+            command.Parameters.AddWithValue("@contrasena", pwdTb.Password);
+
+            using (SQLiteDataAdapter loginAdapter =  new SQLiteDataAdapter(command)) 
+            {
+                DataTable loginTable = new DataTable();
+                loginAdapter.Fill(loginTable);
+                if (loginTable.Rows.Count > 0) { succesfullLogin = true; }
+                else
+                {
+                    succesfullLogin= false;
+                    MessageBox.Show("Contraseña Incorrecta");
+                    con.Close();
+                }
+            }
 
             try 
             {
-                con.Open(); 
+                               
+
                 if (con.State == System.Data.ConnectionState.Open) 
                 {
                     MessageBox.Show("¡Conexión realizada con exito!");

@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Data.SQLite;
-using static Mysqlx.Crud.Order.Types;
 using System.Windows.Controls;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace crud.Classes.create
 {
